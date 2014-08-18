@@ -327,7 +327,7 @@ public class VirtualPlayer extends CraftPlayer implements Listener {
                 players.add(p);}
         }
         Player[] ps = players.toArray(new Player[players.size()]);
-        Player[] bps = Bukkit.getOnlinePlayers();
+        Player[] bps = (Player[]) Bukkit.getOnlinePlayers().toArray();
         return (Player[]) ArrayUtils.addAll(ps, bps);
     }
     
