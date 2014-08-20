@@ -1,9 +1,6 @@
 package mc.alk.virtualplayers.nms.v1_7_R4;
 
-import net.minecraft.server.v1_7_R4.EntityPlayer;
-import net.minecraft.server.v1_7_R4.NetworkManager;
-import net.minecraft.server.v1_7_R4.PacketListener;
-import net.minecraft.server.v1_7_R4.PlayerConnection;
+import net.minecraft.server.v1_7_R4.*;
 import net.minecraft.util.io.netty.buffer.ByteBufAllocator;
 import net.minecraft.util.io.netty.channel.*;
 import net.minecraft.util.io.netty.util.Attribute;
@@ -37,7 +34,7 @@ public class VPPlayerConnection extends PlayerConnection {
     }
 
     private VPPlayerConnection(EntityPlayer player) {
-        super(null, FAKE_NETWORK_MANAGER, player);
+        super(MinecraftServer.getServer(), FAKE_NETWORK_MANAGER, player);
     }
 
 
@@ -56,7 +53,7 @@ public class VPPlayerConnection extends PlayerConnection {
                         break;
                     }
                 }
-            } catch (ReflectiveOperationException ignored) {}
+            } catch (Exception ignored) {}
         }
 
         @Override
