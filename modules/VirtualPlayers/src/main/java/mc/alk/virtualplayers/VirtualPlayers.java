@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class VirtualPlayers extends JavaPlugin implements Listener
 {
     Version server;
-    public static final String MAX = "1.7.10-R9.9-SNAPSHOT";
+    public static final String MAX = "1.7.10-R9.9";
     public static final String MIN = "1.2.5";
     String NMS;
 
