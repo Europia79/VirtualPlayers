@@ -1,10 +1,5 @@
 package mc.alk.virtualplayers.nms.v1_7_R4;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import net.minecraft.server.v1_7_R4.EntityPlayer;
 import net.minecraft.server.v1_7_R4.MinecraftServer;
 import net.minecraft.server.v1_7_R4.PlayerInteractManager;
@@ -30,6 +25,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.*;
+
 public class VirtualPlayer extends CraftPlayer implements Listener {
 
     Player keepInformed; // / who to send the messages to
@@ -54,11 +51,20 @@ public class VirtualPlayer extends CraftPlayer implements Listener {
         /// mcserver, worldserver, GameProfile, PlayerInteractManager
         super(cserver, new EntityPlayer(mcserver, worldServer, gameProfile, pim));
         this.loc = this.getLocation();
+
+        VPPlayerConnection.wrap(getHandle());
     }
 
     public VirtualPlayer(CraftServer cserver, EntityPlayer ep) {
         super(cserver, ep);
         this.loc = this.getLocation();
+
+        VPPlayerConnection.wrap(getHandle());
+    }
+
+    @Override
+    public EntityPlayer getHandle() { // Required for HoloAPI compatibility
+        return super.getHandle();
     }
 
     @Override
@@ -327,7 +333,7 @@ public class VirtualPlayer extends CraftPlayer implements Listener {
                 players.add(p);}
         }
         Player[] ps = players.toArray(new Player[players.size()]);
-        Player[] bps = Bukkit.getOnlinePlayers();
+        Player[] bps = (Player[]) Bukkit.getOnlinePlayers().toArray();
         return (Player[]) ArrayUtils.addAll(ps, bps);
     }
     
