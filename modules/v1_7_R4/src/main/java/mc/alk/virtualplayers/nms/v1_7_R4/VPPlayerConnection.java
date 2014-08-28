@@ -39,227 +39,7 @@ public class VPPlayerConnection extends PlayerConnection {
 
 
     // ----- Stub implementations
-
-    private static final NetworkManager FAKE_NETWORK_MANAGER = new NetworkManager(false) {
-        private Channel a = FAKE_CHANNEL; // Older versions of HoloAPI look for any field containing a Channel
-
-        {
-            // Newer versions search the NetworkManager class to find a Channel field.
-            try {
-                for (Field field : super.getClass().getDeclaredFields()) {
-                    if (Channel.class.isAssignableFrom(field.getType())) {
-                        field.setAccessible(true);
-                        field.set(this, a);
-                        break;
-                    }
-                }
-            } catch (Exception ignored) {}
-        }
-
-        @Override
-        public void a(PacketListener listener) {} // Called by PlayerConnection
-    };
-
-    private static final Channel FAKE_CHANNEL = new Channel() {
-
-        // These are the only two that matter.
-        @Override
-        public ChannelPipeline pipeline() {
-            return FAKE_PIPELINE;
-        }
-
-        @Override
-        public boolean isActive() {
-            return true;
-        }
-
-
-        // The rest are junk ):
-        @Override
-        public EventLoop eventLoop() {
-            return null;
-        }
-
-        @Override
-        public Channel parent() {
-            return null;
-        }
-
-        @Override
-        public ChannelConfig config() {
-            return null;
-        }
-
-        @Override
-        public boolean isOpen() {
-            return false;
-        }
-
-        @Override
-        public boolean isRegistered() {
-            return false;
-        }
-
-        @Override
-        public ChannelMetadata metadata() {
-            return null;
-        }
-
-        @Override
-        public SocketAddress localAddress() {
-            return null;
-        }
-
-        @Override
-        public SocketAddress remoteAddress() {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture closeFuture() {
-            return null;
-        }
-
-        @Override
-        public boolean isWritable() {
-            return false;
-        }
-
-        @Override
-        public Channel flush() {
-            return null;
-        }
-
-        @Override
-        public Channel read() {
-            return null;
-        }
-
-        @Override
-        public Unsafe unsafe() {
-            return null;
-        }
-
-        @Override
-        public <T> Attribute<T> attr(AttributeKey<T> tAttributeKey) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture bind(SocketAddress socketAddress) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture connect(SocketAddress socketAddress) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture connect(SocketAddress socketAddress, SocketAddress socketAddress2) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture disconnect() {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture close() {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture deregister() {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture bind(SocketAddress socketAddress, ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture connect(SocketAddress socketAddress, ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture connect(SocketAddress socketAddress, SocketAddress socketAddress2, ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture disconnect(ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture close(ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture deregister(ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture write(Object o) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture write(Object o, ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture writeAndFlush(Object o, ChannelPromise channelPromise) {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture writeAndFlush(Object o) {
-            return null;
-        }
-
-        @Override
-        public ByteBufAllocator alloc() {
-            return null;
-        }
-
-        @Override
-        public ChannelPromise newPromise() {
-            return null;
-        }
-
-        @Override
-        public ChannelProgressivePromise newProgressivePromise() {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture newSucceededFuture() {
-            return null;
-        }
-
-        @Override
-        public ChannelFuture newFailedFuture(Throwable throwable) {
-            return null;
-        }
-
-        @Override
-        public ChannelPromise voidPromise() {
-            return null;
-        }
-
-        @Override
-        public int compareTo(Channel o) {
-            return 0;
-        }
-    };
+    // The declaration order here is *critical*: Pipeline -> Channel -> NetworkManager
 
     private static final ChannelPipeline FAKE_PIPELINE = new ChannelPipeline() {
 
@@ -565,5 +345,226 @@ public class VPPlayerConnection extends PlayerConnection {
         public Iterator<Map.Entry<String, ChannelHandler>> iterator() {
             return null;
         }
+    };
+
+    private static final Channel FAKE_CHANNEL = new Channel() {
+
+        // These are the only two that matter.
+        @Override
+        public ChannelPipeline pipeline() {
+            return FAKE_PIPELINE;
+        }
+
+        @Override
+        public boolean isActive() {
+            return true;
+        }
+
+
+        // The rest are junk ):
+        @Override
+        public EventLoop eventLoop() {
+            return null;
+        }
+
+        @Override
+        public Channel parent() {
+            return null;
+        }
+
+        @Override
+        public ChannelConfig config() {
+            return null;
+        }
+
+        @Override
+        public boolean isOpen() {
+            return false;
+        }
+
+        @Override
+        public boolean isRegistered() {
+            return false;
+        }
+
+        @Override
+        public ChannelMetadata metadata() {
+            return null;
+        }
+
+        @Override
+        public SocketAddress localAddress() {
+            return null;
+        }
+
+        @Override
+        public SocketAddress remoteAddress() {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture closeFuture() {
+            return null;
+        }
+
+        @Override
+        public boolean isWritable() {
+            return false;
+        }
+
+        @Override
+        public Channel flush() {
+            return null;
+        }
+
+        @Override
+        public Channel read() {
+            return null;
+        }
+
+        @Override
+        public Unsafe unsafe() {
+            return null;
+        }
+
+        @Override
+        public <T> Attribute<T> attr(AttributeKey<T> tAttributeKey) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture bind(SocketAddress socketAddress) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture connect(SocketAddress socketAddress) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture connect(SocketAddress socketAddress, SocketAddress socketAddress2) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture disconnect() {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture close() {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture deregister() {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture bind(SocketAddress socketAddress, ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture connect(SocketAddress socketAddress, ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture connect(SocketAddress socketAddress, SocketAddress socketAddress2, ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture disconnect(ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture close(ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture deregister(ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture write(Object o) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture write(Object o, ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture writeAndFlush(Object o, ChannelPromise channelPromise) {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture writeAndFlush(Object o) {
+            return null;
+        }
+
+        @Override
+        public ByteBufAllocator alloc() {
+            return null;
+        }
+
+        @Override
+        public ChannelPromise newPromise() {
+            return null;
+        }
+
+        @Override
+        public ChannelProgressivePromise newProgressivePromise() {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture newSucceededFuture() {
+            return null;
+        }
+
+        @Override
+        public ChannelFuture newFailedFuture(Throwable throwable) {
+            return null;
+        }
+
+        @Override
+        public ChannelPromise voidPromise() {
+            return null;
+        }
+
+        @Override
+        public int compareTo(Channel o) {
+            return 0;
+        }
+    };
+
+    private static final NetworkManager FAKE_NETWORK_MANAGER = new NetworkManager(false) {
+        private final Channel a = FAKE_CHANNEL; // Older versions of HoloAPI look for any field containing a Channel
+
+        {
+            // Newer versions search the NetworkManager class to find a Channel field.
+            try {
+                for (Field field : this.getClass().getSuperclass().getDeclaredFields()) {
+                    if (Channel.class.isAssignableFrom(field.getType())) {
+                        field.setAccessible(true);
+                        field.set(this, FAKE_CHANNEL);
+                        break;
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+
+        @Override
+        public void a(PacketListener listener) {} // Called by PlayerConnection
     };
 }

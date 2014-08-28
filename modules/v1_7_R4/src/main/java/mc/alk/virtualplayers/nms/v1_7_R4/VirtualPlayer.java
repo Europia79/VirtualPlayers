@@ -63,6 +63,11 @@ public class VirtualPlayer extends CraftPlayer implements Listener {
     }
 
     @Override
+    public EntityPlayer getHandle() { // Required for HoloAPI compatibility
+        return super.getHandle();
+    }
+
+    @Override
     public InventoryView openInventory(Inventory inv) {
         return null;
     }
