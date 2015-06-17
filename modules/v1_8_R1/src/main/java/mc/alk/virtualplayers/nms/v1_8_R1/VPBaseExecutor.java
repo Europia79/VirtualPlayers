@@ -49,9 +49,7 @@ public class VPBaseExecutor extends CustomCommandExecutor{
                 return getVps(name);}
             p = VirtualPlayer.getOrCreate(name);
         }
-        if (!(p instanceof VirtualPlayer)){
-            throw new IllegalArgumentException("Player " + name + " is not a VirtualPlayer");
-        }
+        if (!(p instanceof VirtualPlayer)){ throw new IllegalArgumentException("Player " + name + " is not a VirtualPlayer");}
         numUsedStrings.set(1);
         return p;
     }

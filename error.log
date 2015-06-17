@@ -1,3 +1,69 @@
+worldedit branch errors:
+
+2015-06-17 16:55:58 [Server thread][INFO] VirtualPlayers version 1.6.4.1
+2015-06-17 16:55:58 [Server thread][INFO] Create Virtualplayers for debugging or running commands otherwise unavailable from the console
+2015-06-17 16:55:58 [Server thread][INFO] Website: https://github.com/Europia79/VirtualPlayers
+2015-06-17 16:55:58 [Server thread][INFO] Authors: Alkarin and Europia79
+2015-06-17 16:56:54 [Server thread][INFO] [Essentials] Found new UUID for tester. Replacing 7aecc6d2-e1da-4893-bd93-cf24808f8c9f with 1241a362-a9ff-4a1e-af8e-eb293a95252d
+2015-06-17 16:56:54 [Server thread][INFO] tester[local] logged in with entity id 94 at ([world] -427.5, 4.0, -1210.5)
+2015-06-17 16:56:54 [Server thread][INFO] [tester] 'tester is connecting'
+2015-06-17 16:56:54 [Server thread][INFO] [tester] 'tester connecting.  Details:tester h=20.0 o=true d=false loc=world,0.0,0.0,0.0 gm=SURVIVAL'
+2015-06-17 16:56:54 [Server thread][INFO] tester connecting.  Details:tester h=20.0 o=true d=false loc=world,0.0,0.0,0.0 gm=SURVIVAL
+2015-06-17 16:56:54 [pool-6-thread-1][INFO] Creating empty config: C:\Users\Nikolai\Documents\NetBeansProjects\server\plugins\Essentials\userdata\1241a362-a9ff-4a1e-af8e-eb293a95252d.yml
+2015-06-17 16:56:54 [Server thread][INFO] LoginValidator called for tester
+2015-06-17 16:56:54 [Server thread][INFO] [tester] 'tester gettingMessage= [HolographicDisplays] Found an update: v2.1.10. Download:'
+2015-06-17 16:56:54 [Server thread][INFO] [tester] 'tester gettingMessage= >> http://dev.bukkit.org/bukkit-plugins/holographic-displays'
+2015-06-17 16:56:54 [Server thread][INFO] [tester] 'tester gettingMessage= [EnjinMinecraftPlugin] Your version of Vault is outdated. Groups and permissions will not update.'
+2015-06-17 16:56:54 [Server thread][INFO] [tester] 'tester gettingMessage= Download the latest version here: http://dev.bukkit.org/bukkit-plugins/vault/files/'
+2015-06-17 16:56:54 [Server thread][WARN] §4Failed to teleport new player!
+java.lang.NullPointerException
+	at net.minecraft.server.v1_8_R1.PlayerConnection.isDisconnected(PlayerConnection.java:2072) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer.teleport(CraftPlayer.java:434) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at com.earth2me.essentials.Teleport.now(Teleport.java:126) ~[Essentials180.jar:?]
+	at com.earth2me.essentials.Teleport.now(Teleport.java:84) ~[Essentials180.jar:?]
+	at com.earth2me.essentials.spawn.EssentialsSpawnPlayerListener$NewPlayerTeleport.run(EssentialsSpawnPlayerListener.java:162) [EssentialsSpawn180.jar:?]
+	at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftTask.run(CraftTask.java:71) [spigot.jar:git-Spigot-b73910a-726656b]
+	at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:350) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.z(MinecraftServer.java:709) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.DedicatedServer.z(DedicatedServer.java:316) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.y(MinecraftServer.java:634) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.run(MinecraftServer.java:537) [spigot.jar:git-Spigot-b73910a-726656b]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_11]
+2015-06-17 16:56:54 [Server thread][INFO] inv = [Lorg.bukkit.inventory.ItemStack;@5c38e331
+2015-06-17 16:56:54 [Server thread][WARN] ultiverse-Core] Task #91 for Multiverse-Core v2.4-b527 generated an exception
+java.lang.NullPointerException
+	at net.minecraft.server.v1_8_R1.PlayerConnection.isDisconnected(PlayerConnection.java:2072) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer.teleport(CraftPlayer.java:434) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at mc.alk.virtualplayers.nms.v1_8_R1.VirtualPlayer.teleport(VirtualPlayer.java:203) ~[?:?]
+	at mc.alk.virtualplayers.nms.v1_8_R1.VirtualPlayer.teleport(VirtualPlayer.java:210) ~[?:?]
+	at com.onarandombox.MultiverseCore.listeners.MVPlayerListener$1.run(MVPlayerListener.java:303) ~[?:?]
+	at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftTask.run(CraftTask.java:71) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:350) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.z(MinecraftServer.java:709) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.DedicatedServer.z(DedicatedServer.java:316) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.y(MinecraftServer.java:634) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.run(MinecraftServer.java:537) [spigot.jar:git-Spigot-b73910a-726656b]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_11]
+2015-06-17 16:56:54 [Server thread][WARN] §4Failed to teleport new player!
+java.lang.NullPointerException
+	at net.minecraft.server.v1_8_R1.PlayerConnection.isDisconnected(PlayerConnection.java:2072) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer.teleport(CraftPlayer.java:434) ~[spigot.jar:git-Spigot-b73910a-726656b]
+	at com.earth2me.essentials.Teleport.now(Teleport.java:126) ~[Essentials180.jar:?]
+	at com.earth2me.essentials.Teleport.now(Teleport.java:84) ~[Essentials180.jar:?]
+	at com.earth2me.essentials.spawn.EssentialsSpawnPlayerListener$NewPlayerTeleport.run(EssentialsSpawnPlayerListener.java:162) [EssentialsSpawn180.jar:?]
+	at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftTask.run(CraftTask.java:71) [spigot.jar:git-Spigot-b73910a-726656b]
+	at org.bukkit.craftbukkit.v1_8_R1.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:350) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.z(MinecraftServer.java:709) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.DedicatedServer.z(DedicatedServer.java:316) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.y(MinecraftServer.java:634) [spigot.jar:git-Spigot-b73910a-726656b]
+	at net.minecraft.server.v1_8_R1.MinecraftServer.run(MinecraftServer.java:537) [spigot.jar:git-Spigot-b73910a-726656b]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_11]
+    
+    /dc tester arena join
+2015-06-17 16:58:38 [Server thread][INFO] <vp>  [string ...] :Player tester is not a VirtualPlayer
+
+
+
 Occurs on v1_7_R4
 Does NOT occur on v1_7_R3
 

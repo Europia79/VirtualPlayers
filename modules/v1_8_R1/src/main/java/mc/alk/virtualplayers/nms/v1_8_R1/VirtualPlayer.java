@@ -1,16 +1,24 @@
 package mc.alk.virtualplayers.nms.v1_8_R1;
 
 import com.mojang.authlib.GameProfile;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import mc.alk.virtualplayers.network.v1_8_R1.NPCConnection;
+
 import net.minecraft.server.v1_8_R1.EntityPlayer;
+import net.minecraft.server.v1_8_R1.EnumProtocolDirection;
 import net.minecraft.server.v1_8_R1.MinecraftServer;
+import net.minecraft.server.v1_8_R1.NetworkManager;
+import net.minecraft.server.v1_8_R1.PlayerConnection;
 import net.minecraft.server.v1_8_R1.PlayerInteractManager;
 import net.minecraft.server.v1_8_R1.WorldServer;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -30,6 +38,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Scoreboard;
+
+import io.netty.channel.ChannelHandlerContext;
 
 public class VirtualPlayer extends CraftPlayer {
 
@@ -372,6 +382,14 @@ public class VirtualPlayer extends CraftPlayer {
         }
         GameProfile gameProfile = new GameProfile(UUID.randomUUID(), CustomCommandExecutor.colorChat(name));
         VirtualPlayer vp = new VirtualPlayer(cserver, mcserver, worldServer, gameProfile, pim);
+        
+        // NetworkManager networkManager = new NetworkManager(EnumProtocolDirection.SERVERBOUND);
+        // ChannelHandlerContext channelContext = new ChannelHandlerContext();
+        // networkManager.channelActive(channelContext);
+        vp.getHandle().playerConnection = new NPCConnection(vp.getHandle());
+        vp.getHandle().joining = true;
+        Injector injector = new PlayerListInjector();
+        injector.inject(vp);
         vps.put(vp.getUniqueId(), vp);
         names.put(vp.getName(), vp);
         vp.loc = location;
